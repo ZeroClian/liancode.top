@@ -1677,4 +1677,65 @@
         <tag>事件</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Netty—ByteBuffer</title>
+    <url>/posts/f79db71a.html</url>
+    <content><![CDATA[<h2 id="ByteBuffer"><a href="#ByteBuffer" class="headerlink" title="ByteBuffer"></a>ByteBuffer</h2><h3 id="一、使用"><a href="#一、使用" class="headerlink" title="一、使用"></a>一、使用</h3><ol>
+<li>向 <code>buffer</code> 写入数据，例如调用 <code>channel.read(buffer)</code></li>
+<li>调用 <code>filp()</code> 切换至读模式</li>
+<li>从 <code>buffer</code> 读取数据，例如调用 <code>buffer.get()</code></li>
+<li>调用 <code>clear()</code> 或者 <code>compact()</code> 切换至写模式</li>
+<li>重复 1-4 步骤</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestByteBuffer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            FileChannel channel = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;src/main/resources/data.txt&quot;</span>).getChannel();</span><br><span class="line">            ByteBuffer buffer = ByteBuffer.allocate(<span class="number">10</span>);</span><br><span class="line">            <span class="keyword">while</span> (channel.read(buffer) != -<span class="number">1</span>)&#123;</span><br><span class="line">                buffer.flip();</span><br><span class="line">                <span class="keyword">while</span> (buffer.hasRemaining())&#123;</span><br><span class="line">                    <span class="keyword">byte</span> b = buffer.get();</span><br><span class="line">                    System.out.print(<span class="string">&quot; &quot;</span>+ (<span class="keyword">char</span>) b);</span><br><span class="line">                &#125;</span><br><span class="line">                buffer.clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、ByteBuffer-结构"><a href="#二、ByteBuffer-结构" class="headerlink" title="二、ByteBuffer 结构"></a>二、ByteBuffer 结构</h3><h4 id="1-属性"><a href="#1-属性" class="headerlink" title="1. 属性"></a>1. 属性</h4><ul>
+<li>capacity</li>
+<li>position</li>
+<li>limit</li>
+</ul>
+<p><img src="https://gitee.com/ZeroClian/my-picture/raw/master/img/image-20210814202959182.png" alt="image-20210814202959182">    <img src="https://gitee.com/ZeroClian/my-picture/raw/master/img/image-20210815172617805.png" alt="image-20210815172617805"></p>
+<p><img src="https://gitee.com/ZeroClian/my-picture/raw/master/img/image-20210815173713178.png" alt="image-20210815173713178"></p>
+<h4 id="2-常见方法"><a href="#2-常见方法" class="headerlink" title="2. 常见方法"></a>2. 常见方法</h4><ul>
+<li>分配空间 ：<code>allocate()</code> 或 <code>allocateDirect()</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestByteBufferAllocate</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * class java.nio.HeapByteBuffer</span></span><br><span class="line"><span class="comment">         * java 堆内存，读写效率较低，受到 GC 的影响</span></span><br><span class="line"><span class="comment">         * GC 的标记整理算法，会多一次拷贝</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        System.out.println(ByteBuffer.allocate(<span class="number">10</span>).getClass());</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * class java.nio.DirectByteBuffer</span></span><br><span class="line"><span class="comment">         * 直接内存，读写效率高（少一次拷贝），不受 GC 的影响</span></span><br><span class="line"><span class="comment">         * 系统内存的分配效率低，netty对其进行了优化，使用不当会造成内存泄露</span></span><br><span class="line"><span class="comment">         * 注：直接内存与 ByteBuffer 是虚引用，ByteBuffer 被 GC 回收后，直接内存也会被清理</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        System.out.println(ByteBuffer.allocateDirect(<span class="number">10</span>).getClass());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>写入数据</p>
+<p>调用 <code>channel</code> 的 <code>read</code> 方法</p>
+<p>调用 <code>buffer</code> 自己的 <code>put</code> 方法</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> readByte = channel.read(buf);</span><br><span class="line">buf.put((<span class="keyword">byte</span>) <span class="number">127</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>读取数据</p>
+<p>调用 <code>channel</code> 的 <code>write</code> 方法</p>
+<p>调用 <code>buffer</code> 的 <code>get</code> 方法</p>
+<p><code>mark()</code>：标记当前 position</p>
+<p><code>reset()</code>：回到标记的位置</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> writeByte = channel.write(buf);</span><br><span class="line">buf.get();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>get()</code> 方法会让 <code>position</code> 的读指针往后移动，如果需要重复读取数据</p>
+<ul>
+<li>调用 <code>rewind</code> 方法将 <code>position</code> 重置为 0</li>
+<li>调用 <code>get( int i )</code> 方法获取索引 i 的内容，指针不会移动</li>
+</ul>
+</blockquote>
+<ul>
+<li>字符串与 ByteBuffer 互转</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ByteBuffer buf = StandardCharsets.UTF_8.encode(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">ByteBuffer buf2 = ByteBuffer.wrap(<span class="string">&quot;hello&quot;</span>.getBytes());</span><br><span class="line"></span><br><span class="line">String str = StandardCharsets.UTF_8.decode(buf).toString();</span><br></pre></td></tr></table></figure>
+<h4 id="3-处理黏包和拆包"><a href="#3-处理黏包和拆包" class="headerlink" title="3. 处理黏包和拆包"></a>3. 处理黏包和拆包</h4><ul>
+<li>简单方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestByteBufferExam</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ByteBuffer source = ByteBuffer.allocate(<span class="number">32</span>);</span><br><span class="line">        source.put(<span class="string">&quot;hello,world\nI&#x27;m,zhangsan\nHo&quot;</span>.getBytes());</span><br><span class="line">        split(source);</span><br><span class="line">        source.put(<span class="string">&quot;w are you?\n&quot;</span>.getBytes());</span><br><span class="line">        split(source);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">split</span><span class="params">(ByteBuffer source)</span> </span>&#123;</span><br><span class="line">        source.flip();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; source.limit(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (source.get(i) == <span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> len = i + <span class="number">1</span> - source.position();</span><br><span class="line">                ByteBuffer buffer = ByteBuffer.allocate(len);</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">                    buffer.put(source.get());</span><br><span class="line">                &#125;</span><br><span class="line">                buffer.rewind();</span><br><span class="line">                System.out.println(StandardCharsets.UTF_8.decode(buffer));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        source.compact();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Netty</category>
+      </categories>
+      <tags>
+        <tag>知识点</tag>
+      </tags>
+  </entry>
 </search>
