@@ -3596,4 +3596,29 @@
         <tag>知识点</tag>
       </tags>
   </entry>
+  <entry>
+    <title>OpenJDK无法连接MySQL</title>
+    <url>/posts/9eb6681d.html</url>
+    <content><![CDATA[<h1 id="OpenJDK无法连接MySQL"><a href="#OpenJDK无法连接MySQL" class="headerlink" title="OpenJDK无法连接MySQL"></a>OpenJDK无法连接MySQL</h1><h2 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h2><blockquote>
+<p>javax.net.ssl.SSLHandshakeException: No appropriate protocol (protocol is disabled or cipher suites are inappropriate)</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Caused by: javax.net.ssl.SSLHandshakeException: No appropriate protocol (protocol is disabled or cipher suites are inappropriate)</span><br><span class="line">	at sun.security.ssl.HandshakeContext.&lt;init&gt;(HandshakeContext.java:171) ~[na:1.8.0_302]</span><br><span class="line">	at sun.security.ssl.ClientHandshakeContext.&lt;init&gt;(ClientHandshakeContext.java:98) ~[na:1.8.0_302]</span><br><span class="line">	at sun.security.ssl.TransportContext.kickstart(TransportContext.java:220) ~[na:1.8.0_302]</span><br><span class="line">	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:432) ~[na:1.8.0_302]</span><br><span class="line">	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:410) ~[na:1.8.0_302]</span><br><span class="line">	at com.mysql.cj.protocol.ExportControlled.performTlsHandshake(ExportControlled.java:315) ~[mysql-connector-java-8.0.15.jar:8.0.15]</span><br><span class="line">	at com.mysql.cj.protocol.StandardSocketFactory.performTlsHandshake(StandardSocketFactory.java:188) ~[mysql-connector-java-8.0.15.jar:8.0.15]</span><br><span class="line">	at com.mysql.cj.protocol.a.NativeSocketConnection.performTlsHandshake(NativeSocketConnection.java:99) ~[mysql-connector-java-8.0.15.jar:8.0.15]</span><br><span class="line">	at com.mysql.cj.protocol.a.NativeProtocol.negotiateSSLConnection(NativeProtocol.java:352) ~[mysql-connector-java-8.0.15.jar:8.0.15]</span><br><span class="line">	... 97 common frames omitted</span><br></pre></td></tr></table></figure>
+<p>原因：OpenJDK默认TSL协议和Mysql不匹配</p>
+<p>解决办法：</p>
+<ul>
+<li>连接的url最后加上</li>
+</ul>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">?enabledTLSProtocols=TLSv1.2</span><br></pre></td></tr></table></figure>
+<p>但是接着会出现这样的错误，原因是SSL协议不支持，要设置为false</p>
+<p><img src="https://gitee.com/ZeroClian/my-picture/raw/master/img/image-20210902203218887.png" alt="image-20210902203218887"></p>
+<p>完整的URL：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">jdbc:mysql//地址:端口号/数据库?enabledTLSProtocols=TLSv1.2&amp;useSSL=false</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BUG</category>
+      </categories>
+      <tags>
+        <tag>JDK</tag>
+      </tags>
+  </entry>
 </search>
