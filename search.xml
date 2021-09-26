@@ -1449,36 +1449,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Redis高级属性</title>
-    <url>/posts/5fb5b514.html</url>
-    <content><![CDATA[<h1 id="慢查询"><a href="#慢查询" class="headerlink" title="慢查询"></a>慢查询</h1><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
-<li>慢查询的队列长度（先进先出队列）</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 默认值</span></span><br><span class="line">config get slowlog-max-len = 128</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置，长度不要设置过大</span></span><br><span class="line">config set slowlog-max-len 1000</span><br></pre></td></tr></table></figure>
-<ul>
-<li>需要记录的慢查询的时间（微秒）</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 默认值</span></span><br><span class="line">config get slowlog-log-slower-than = 10000</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置，时间不要设置过大</span></span><br><span class="line">config set slowlog-log-slower-than = 1000</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>除了是第一次安装修改配置文件，不然不建议直接修改</p>
-</blockquote>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><ul>
-<li><p><code>slowlog get [n]</code>：获取慢查询队列</p>
-</li>
-<li><p><code>slowlog len</code>：获取慢查询队列长度</p>
-</li>
-<li><p><code>slowlog reset</code>：清空慢查询队列</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Redis</category>
-      </categories>
-      <tags>
-        <tag>优化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Netty网络聊天室实战</title>
     <url>/posts/90cf43cc.html</url>
     <content><![CDATA[<h1 id="1-了解Netty"><a href="#1-了解Netty" class="headerlink" title="1.了解Netty"></a>1.了解Netty</h1><p>Netty是由<a href="https://baike.baidu.com/item/JBOSS">JBOSS</a>提供的一个<a href="https://baike.baidu.com/item/java%E5%BC%80%E6%BA%90/10795649">java开源</a>框架，现为 <a href="https://baike.baidu.com/item/Github/10145341">Github</a>上的独立项目。Netty提供异步的、<a href="https://baike.baidu.com/item/%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/9597519">事件驱动</a>的网络应用程序框架和工具，用以快速开发高性能、高可靠性的<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E5%99%A8/99096">网络服务器</a>和客户端程序。<br>也就是说，Netty 是一个基于NIO的客户、服务器端的编程框架，使用Netty 可以确保你快速和简单的开发出一个网络应用，例如实现了某种协议的客户、服务端应用。Netty相当于简化和流线化了网络应用的编程开发过程，例如：基于TCP和UDP的socket服务开发。<img src="https://cdn.nlark.com/yuque/0/2020/jpeg/2577724/1604565759481-396dc592-1d06-45b4-aa25-42eb3766dfba.jpeg#align=left&display=inline&height=319&margin=%5Bobject%20Object%5D&originHeight=319&originWidth=672&size=0&status=done&style=shadow&width=672"></p>
@@ -3613,12 +3583,50 @@
 <p><img src="https://gitee.com/ZeroClian/my-picture/raw/master/img/image-20210902203218887.png" alt="image-20210902203218887"></p>
 <p>完整的URL：</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">jdbc:mysql//地址:端口号/数据库?enabledTLSProtocols=TLSv1.2&amp;useSSL=false</span></span><br></pre></td></tr></table></figure>
+
+
 ]]></content>
       <categories>
         <category>BUG</category>
       </categories>
       <tags>
         <tag>JDK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis使用详解</title>
+    <url>/posts/5fb5b514.html</url>
+    <content><![CDATA[<h1 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--Redis--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Redis服务器连接端口</span></span><br><span class="line"><span class="string">spring.redis.port=6379</span></span><br><span class="line"><span class="comment"># Redis服务器地址</span></span><br><span class="line"><span class="string">spring.redis.host=127.0.0.1</span></span><br><span class="line"><span class="comment"># Redis数据库索引（默认为0）</span></span><br><span class="line"><span class="string">spring.redis.database=0</span></span><br><span class="line"><span class="comment"># Redis服务器连接密码（默认为空）</span></span><br><span class="line"><span class="string">spring.redis.password=</span></span><br><span class="line"><span class="comment"># 连接池最大连接数（使用负值表示没有限制）</span></span><br><span class="line"><span class="string">spring.redis.jedis.pool.max-active=8</span></span><br><span class="line"><span class="comment"># 连接池最大阻塞等待时间（使用负值表示没有限制）</span></span><br><span class="line"><span class="string">spring.redis.jedis.pool.max-wait=-1ms</span></span><br><span class="line"><span class="comment"># 连接池中的最大空闲连接</span></span><br><span class="line"><span class="string">spring.redis.jedis.pool.max-idle=8</span></span><br><span class="line"><span class="comment"># 连接池中的最小空闲连接</span></span><br><span class="line"><span class="string">spring.redis.jedis.pool.min-idle=0</span></span><br><span class="line"><span class="comment"># 连接超时时间（毫秒）</span></span><br><span class="line"><span class="string">spring.redis.timeout=5000ms</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="慢查询"><a href="#慢查询" class="headerlink" title="慢查询"></a>慢查询</h1><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
+<li>慢查询的队列长度（先进先出队列）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 默认值</span></span><br><span class="line">config get slowlog-max-len = 128</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置，长度不要设置过大</span></span><br><span class="line">config set slowlog-max-len 1000</span><br></pre></td></tr></table></figure>
+<ul>
+<li>需要记录的慢查询的时间（微秒）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 默认值</span></span><br><span class="line">config get slowlog-log-slower-than = 10000</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置，时间不要设置过大</span></span><br><span class="line">config set slowlog-log-slower-than = 1000</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>除了是第一次安装修改配置文件，不然不建议直接修改</p>
+</blockquote>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><ul>
+<li><p><code>slowlog get [n]</code>：获取慢查询队列</p>
+</li>
+<li><p><code>slowlog len</code>：获取慢查询队列长度</p>
+</li>
+<li><p><code>slowlog reset</code>：清空慢查询队列</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>使用</tag>
       </tags>
   </entry>
 </search>
