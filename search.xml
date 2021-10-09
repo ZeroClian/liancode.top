@@ -3629,4 +3629,20 @@
         <tag>使用</tag>
       </tags>
   </entry>
+  <entry>
+    <title>MacBook IDEA git pull出现.DS_Store问题</title>
+    <url>/posts/373b858b.html</url>
+    <content><![CDATA[<h2 id="MacBook-IDEA-git-pull出现-DS-Store问题"><a href="#MacBook-IDEA-git-pull出现-DS-Store问题" class="headerlink" title="MacBook IDEA git pull出现.DS_Store问题"></a>MacBook IDEA git pull出现.DS_Store问题</h2><ul>
+<li>解决方案：<br>在IDEA窗口中直接运行如下命令将其删除</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/ZeroClian/my-picture/raw/master/img/image-20211008142151863.png" alt="image-20211008142151863"></p>
+]]></content>
+      <categories>
+        <category>BUG</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
 </search>
