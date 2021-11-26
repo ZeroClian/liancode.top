@@ -247,85 +247,6 @@
       </tags>
   </entry>
   <entry>
-    <title>文章发布常用配置</title>
-    <url>/posts/4a17b156.html</url>
-    <content><![CDATA[<h2 id="一、文章技巧"><a href="#一、文章技巧" class="headerlink" title="一、文章技巧"></a>一、文章技巧</h2><h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标题</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">类型</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">分类</span></span><br><span class="line"><span class="attr">cover:</span> <span class="string">&#x27;https://cdn.jsdelivr.net/gh/ZeroClian/picture/img/idea.png&#x27;</span></span><br><span class="line"><span class="attr">cover:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2021-05-27 17:07:45</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-
-
-<p>哪個英文字母最酷？ <span class="hide-inline"><button type="button" class="hide-button button--animated" style="background-color: #FF7242;color: #fff">查看答案
-  </button><span class="hide-content">因為西裝褲(C裝酷)</span></span></p>
-<p>門裏站着一個人? <span class="hide-inline"><button type="button" class="hide-button button--animated" style="">Click
-  </button><span class="hide-content">閃</span></span></p>
-<a class="btn-beautify button--animated blue larger" href="https://butterfly.js.org/" 
-  title="JavaStudys"><i class="far fa-hand-point-right fa-fw"></i><span>JavaStudys</span></a>
-
-<a class="btn-beautify button--animated blue" href="https://butterfly.js.org/" 
-  title="JavaStudys"><i class="far fa-hand-point-right fa-fw"></i><span>JavaStudys</span></a>
-
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% btn &#x27;https://butterfly.js.org/&#x27;,JavaStudys,far fa-hand-point-right,blue larger %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% btn &#x27;https://butterfly.js.org/&#x27;,JavaStudys,far fa-hand-point-right,blue %&#125;</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>饼图</li>
-</ul>
-<div class="mermaid">pie
-    title Key elements in Product X
-    &quot;Calcium&quot; : 42.96
-    &quot;Potassium&quot; : 50.05
-    &quot;Magnesium&quot; : 10.01
-    &quot;Iron&quot; :  5</div>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% mermaid %&#125;</span><br><span class="line">pie</span><br><span class="line">    title Key elements in Product X</span><br><span class="line">    &quot;Calcium&quot; : 42.96</span><br><span class="line">    &quot;Potassium&quot; : 50.05</span><br><span class="line">    &quot;Magnesium&quot; : 10.01</span><br><span class="line">    &quot;Iron&quot; :  5</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>模板</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>回顾2020年</title>
-    <url>/posts/97d452a7.html</url>
-    <content><![CDATA[<h2 id="回顾2020年"><a href="#回顾2020年" class="headerlink" title="回顾2020年"></a>回顾2020年</h2><p>年初，突如其来的疫情，打乱了原有的计划，小时候梦想什么时候能在家学习多好，在这一年就这么实现了，但是学起来才发现，似乎并没有幻想中那么美好，老师上网课方式各种各样，手机电脑下载一堆软件，网上的课总是令人提不起精神，或许是我对这些课不感兴趣吧。</p>
-<p>在家期间了也学了点别的，买了个云服务器用 SpringBoot 搭了个博客网站，但是没敢把文章放上去，生怕自己环境弄不好，一下子数据库崩了，我对数据库也不是很熟悉。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ZeroClian/picture/img/image-20201231213204148.png"></p>
-<p>学了那么一阵子，突然觉得自己行了，想找份实习，于是开始投简历，投了各种级别的公司，发现自己笔试的算法题都做不出几道来，于是开始恶补数据结构和算法。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ZeroClian/picture/img/image-20201231214049340.png"></p>
-<p>在 leetcode 上做了一百多道题目后，常见的题目都掌握了，刷题的脚步也停了下来，有点半途而废的感觉。学习过程中，也会写写笔记，然后放到 csdn 博客上，没想到的是大三做的一个课程设计，看和收藏的人最多，</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ZeroClian/picture/img/image-20201231214741252.png"></p>
-<p>一年过去，看着博客从每个都是0，到现在</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ZeroClian/picture/img/image-20201231214936990.png"></p>
-<p>感觉像是自己带大的孩子，虽然自己还是很菜，但是新的一年还是想继续坚持下去。</p>
-<p>投了许多简历，也收到了一些面试的邀请，面试过程中，发现自己学的并不是很扎实，有些知识明明学过，却说不出个所以然，结果可想而知。回想自己的学习过程，似乎一直在接受新知识，却没有对已学的知识加深了解，也明白到自己要在一个方面强化自己的优势，要沉下心来。</p>
-<p>很快暑假就在线上面试中过去了，迎来了大四的开学，开学也刚好让我转正，成为了一名光荣的中共党员。让我没想到的是，匿名投票选支委，居然让选了我当学生党支部副书记，没想到大家这么看好我（我怀疑有人串通，说好的民主呢）。</p>
-<p>成为副书记，开启了我忙碌的大四，党务工作真是令人头大，发展党员的各种流程，入党志愿书上的各种日期和签名，生怕时间不对，写错字，这里要感谢亿阳和梓涵带我，我对这些都有阴影了。</p>
-<p>好不容易弄完了发展党员，觉得可以休息一阵子好好准备面试，结果要准备检查材料，最后一天冲刺从早上9点去办公室待到晚上10点多才回的宿舍，终于搞定了，看着一桌子分类好的材料，大家都辛苦了。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ZeroClian/picture/img/image-20201231221426422.png"></p>
-<p>随着事情一件一件一件的忙完，学期似乎也到了尾声，某老师也开始布置他那为难人的 php 作业，好在今年的难度比去年的低了很多，不过大多数的同学还是不是很懂，也因此我弄了个公众号，写了一些作业相关的文章。不得不吐槽一下，我知道老师你很牛逼，但是也不用每节课都花那么长的时间夸你自己吧，凡尔赛实锤了。</p>
-<p>弄完了作业，结束了考试，考试期间一时兴起，又弄了个静态网站，因为买的服务器要到期了，我又穷，就用 Hexo + GitHub 弄了个博客，大佬的框架就是香啊，博客地址：<a href="https://zeroclian.github.io/">https://zeroclian.github.io/</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/ZeroClian/picture/img/image-20201231222849876.png"></p>
-<p>2020年就这么结束了，不知道2021会怎么样，但是希望未来的日子能够充满阳光。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/ZeroClian/picture/img/image-20201231223446172.png" alt="I Love you. YCL&amp;LRY"></p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>总结</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>浅谈 MySQL 事务</title>
     <url>/posts/d98c058a.html</url>
     <content><![CDATA[<h1 id="浅谈-MySQL-事务"><a href="#浅谈-MySQL-事务" class="headerlink" title="浅谈 MySQL 事务"></a>浅谈 MySQL 事务</h1><hr>
@@ -3644,5 +3565,59 @@
       <tags>
         <tag>git</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/posts/0.html</url>
+    <content><![CDATA[<p>启动命令：<code>brew services start rabbitmq</code></p>
+<p>关闭命令：<code>brew services stop rabbitmq</code></p>
+<p>管理界面：<a href="http://localhost:15672/">http://localhost:15672/</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>文章发布常用配置</title>
+    <url>/posts/4a17b156.html</url>
+    <content><![CDATA[<h2 id="一、文章技巧"><a href="#一、文章技巧" class="headerlink" title="一、文章技巧"></a>一、文章技巧</h2><h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标题</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">类型</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">分类</span></span><br><span class="line"><span class="attr">cover:</span> <span class="string">&#x27;https://cdn.jsdelivr.net/gh/ZeroClian/picture/img/idea.png&#x27;</span></span><br><span class="line"><span class="attr">cover:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2021-05-27 17:07:45</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+
+<p>哪個英文字母最酷？ <span class="hide-inline"><button type="button" class="hide-button button--animated" style="background-color: #FF7242;color: #fff">查看答案
+  </button><span class="hide-content">因為西裝褲(C裝酷)</span></span></p>
+<p>門裏站着一個人? <span class="hide-inline"><button type="button" class="hide-button button--animated" style="">Click
+  </button><span class="hide-content">閃</span></span></p>
+<a class="btn-beautify button--animated blue larger" href="https://butterfly.js.org/" 
+  title="JavaStudys"><i class="far fa-hand-point-right fa-fw"></i><span>JavaStudys</span></a>
+
+<a class="btn-beautify button--animated blue" href="https://butterfly.js.org/" 
+  title="JavaStudys"><i class="far fa-hand-point-right fa-fw"></i><span>JavaStudys</span></a>
+
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% btn &#x27;https://butterfly.js.org/&#x27;,JavaStudys,far fa-hand-point-right,blue larger %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% btn &#x27;https://butterfly.js.org/&#x27;,JavaStudys,far fa-hand-point-right,blue %&#125;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>饼图</li>
+</ul>
+<div class="mermaid">pie
+    title Key elements in Product X
+    &quot;Calcium&quot; : 42.96
+    &quot;Potassium&quot; : 50.05
+    &quot;Magnesium&quot; : 10.01
+    &quot;Iron&quot; :  5</div>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% mermaid %&#125;</span><br><span class="line">pie</span><br><span class="line">    title Key elements in Product X</span><br><span class="line">    &quot;Calcium&quot; : 42.96</span><br><span class="line">    &quot;Potassium&quot; : 50.05</span><br><span class="line">    &quot;Magnesium&quot; : 10.01</span><br><span class="line">    &quot;Iron&quot; :  5</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>模板</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/posts/0.html</url>
+    <content><![CDATA[<p>引入依赖：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--Feign--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-openfeign<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-ribbon<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.7.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
 </search>
