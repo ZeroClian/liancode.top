@@ -3567,19 +3567,28 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/posts/0.html</url>
+    <title>Feign整合详解</title>
+    <url>/posts/5ce958d3.html</url>
     <content><![CDATA[<p>引入依赖：</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--Feign--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-openfeign<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-ribbon<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.7.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>Spring Cloud</category>
+      </categories>
+      <tags>
+        <tag>Fegin</tag>
+      </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/posts/0.html</url>
+    <title>RabbitMq</title>
+    <url>/posts/8e2dee18.html</url>
     <content><![CDATA[<p>启动命令：<code>brew services start rabbitmq</code></p>
 <p>关闭命令：<code>brew services stop rabbitmq</code></p>
 <p>管理界面：<a href="http://localhost:15672/">http://localhost:15672/</a></p>
 ]]></content>
+      <categories>
+        <category>RabbitMq</category>
+      </categories>
   </entry>
   <entry>
     <title>文章发布常用配置</title>
