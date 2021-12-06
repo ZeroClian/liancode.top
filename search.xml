@@ -3629,4 +3629,88 @@
         <tag>模板</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Annotation-原理及自定义注解</title>
+    <url>/posts/1f7df53f.html</url>
+    <content><![CDATA[<h2 id="什么是注解？"><a href="#什么是注解？" class="headerlink" title="什么是注解？"></a>什么是注解？</h2><p><strong>所谓的注解其实就是一个实现了Annotation的接口，而我们通过反射获取到的实际上是通过JDK动态代理生成的代理类，这个类实现了我们的注解接口</strong></p>
+<h2 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h2><p>元注解：对注解进行注解，也就是对注解进行标记，元注解的背后处理逻辑由apt tool提供，对注解的行为做出一些限制，例如生命周期，作用范围等等。</p>
+<h3 id="Retention"><a href="#Retention" class="headerlink" title="@Retention"></a>@Retention</h3><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SOURCE</td>
+<td align="left">注解只在源码阶段保留，在编译器进行编译的时候这类注解被抹除，常见的@Override就属于这种注解</td>
+</tr>
+<tr>
+<td align="left">CLASS</td>
+<td align="left">注解在编译期保留，但是当Java虚拟机加载class文件时会被丢弃，这个也是@Retention的<strong>「默认值」</strong>。@Deprecated和@NonNull就属于这样的注解</td>
+</tr>
+<tr>
+<td align="left">RUNTIME</td>
+<td align="left">注解在运行期间仍然保留，在程序中可以通过反射获取，Spring中常见的@Controller、@Service等都属于这一类</td>
+</tr>
+</tbody></table>
+<h3 id="Target"><a href="#Target" class="headerlink" title="@Target"></a>@Target</h3><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">作用的对象类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">TYPE</td>
+<td align="left">类、接口、枚举</td>
+</tr>
+<tr>
+<td align="left">FIELD</td>
+<td align="left">类属性</td>
+</tr>
+<tr>
+<td align="left">METHOD</td>
+<td align="left">方法</td>
+</tr>
+<tr>
+<td align="left">PARAMETER</td>
+<td align="left">参数类型</td>
+</tr>
+<tr>
+<td align="left">CONSTRUCTOR</td>
+<td align="left">构造方法</td>
+</tr>
+<tr>
+<td align="left">LOCAL_VARIABLE</td>
+<td align="left">局部变量</td>
+</tr>
+<tr>
+<td align="left">ANNOTATION_TYPE</td>
+<td align="left">注解</td>
+</tr>
+<tr>
+<td align="left">PACKAGE</td>
+<td align="left">包</td>
+</tr>
+<tr>
+<td align="left">TYPE_PARAMETER</td>
+<td align="left">1.8之后，泛型</td>
+</tr>
+<tr>
+<td align="left">TYPE_USE</td>
+<td align="left">1.8之后，除了PACKAGE之外任意类型</td>
+</tr>
+</tbody></table>
+<h3 id="Documented"><a href="#Documented" class="headerlink" title="@Documented"></a>@Documented</h3><p>将注解的元素加入Javadoc中</p>
+<h3 id="Inherited"><a href="#Inherited" class="headerlink" title="@Inherited"></a>@Inherited</h3><p>如果被这个注解标记了，被标记的类、接口会继承父类、接口的上面的注解</p>
+<h3 id="Repeatable"><a href="#Repeatable" class="headerlink" title="@Repeatable"></a>@Repeatable</h3><p>表示该注解可以重复标记</p>
+<h2 id="注解-反射"><a href="#注解-反射" class="headerlink" title="注解+反射"></a>注解+反射</h2>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>注解</tag>
+      </tags>
+  </entry>
 </search>
